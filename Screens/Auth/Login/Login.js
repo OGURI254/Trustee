@@ -6,7 +6,7 @@ import Entypo from '@expo/vector-icons/Entypo';
 import AntDesign from '@expo/vector-icons/AntDesign';
 
 
-export default function Login() {
+export default function Login({navigation}) {
     const [secureTextEntry, setSecureTextEntry] = useState(true);
     const toggleSecureEntry = () => {
         setSecureTextEntry(!secureTextEntry);
@@ -25,13 +25,13 @@ export default function Login() {
                             <Entypo name={secureTextEntry ? 'eye' : 'eye-with-line'} size={24} color="black" />
                         </TouchableOpacity>
                     </View>
-                    <View className="mt-4 flex-row justify-between">
+                    <View className="mt-3 flex-row justify-between">
                         <View>
                             <Text>Remember Me</Text>
                         </View>
                         <TouchableOpacity><Text className="text-red-400">Forget Password</Text></TouchableOpacity>
                     </View>
-                    <TouchableOpacity className="bg-[#2121FC] rounded mx-auto mt-6 w-[220px] p-2 items-center"><Text className="text-white font-bold text-[23px]">Log in</Text></TouchableOpacity>
+                    <TouchableOpacity className="bg-[#2121FC] rounded mx-auto mt-7 w-[250px] p-2 items-center"><Text className="text-white font-bold text-[23px]">Log in</Text></TouchableOpacity>
 
                     <View className="mt-6 flex-row items-center justify-center">
                         <View className="h-[2px] mr-3 w-[80px] bg-gray-300"></View>
@@ -39,14 +39,14 @@ export default function Login() {
                         <View className="h-[2px] ml-3 w-[80px] bg-gray-300"></View>
                     </View>
 
-                    <TouchableOpacity className="border flex-row items-center justify-center p-2 border-[#2121FC] rounded mt-6">
+                    <TouchableOpacity className="border flex-row w-[250px] mx-auto items-center justify-center p-2 border-[#2121FC] rounded mt-6">
                     <Text className="text-[#4CAF50]"><AntDesign  name="google" size={24}  /></Text>
                         <Text className="text-[#2121FC]">  Log in with Google</Text>
                     </TouchableOpacity>
                 </View>
                 <View className="flex-row mt-16 mx-auto">
                     <Text>Don't have and account?</Text>
-                    <TouchableOpacity className="ml-1"><Text className="text-[#FFA20D]">Sign Up</Text></TouchableOpacity>
+                    <TouchableOpacity className="ml-1" onPress={() => navigation.navigate('SignUp')}><Text className="text-[#FFA20D]">Sign Up</Text></TouchableOpacity>
                 </View>
             </View>
         </SafeAreaView>
