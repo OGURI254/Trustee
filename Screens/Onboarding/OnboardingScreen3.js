@@ -6,9 +6,9 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 export default function OnboardingScreen3({navigation}) {
   return (
     <SafeAreaView className="flex-1 bg-[#4141FF]">
-      <View className="mt-6 items-center flex-1 flex flex-col justify-evenly mx-2">
+      <View className=" items-center flex-1 flex flex-col justify-evenly mx-2">
         <View>
-          <Text className="text-white text-[24px] text-center mt-5 font-bold">Real-Time Tracking</Text>
+          <Text className="text-white text-[24px] text-center font-bold">Real-Time Tracking</Text>
           <Text className="text-white mt-4 text-center text-[18px]">Track your shipments in real-time from the moment they leave the seller until they arrive at your doorstep.</Text>
         </View>
         <Image source={RealTracking} />

@@ -1,10 +1,10 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-export default function Transaction() {
+export default function FirstTimerScreen() {
   return (
     <View>
-      <Text>Transaction</Text>
+      <Text>FirstTimerScreen</Text>
     </View>
   )
 }

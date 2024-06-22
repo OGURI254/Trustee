@@ -6,9 +6,9 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 export default function OnboardingScreen2({navigation}) {
   return (
     <SafeAreaView className="flex-1 bg-[#4141FF]">
-      <View className="mt-6 items-center flex-1 flex flex-col justify-evenly mx-2">
+      <View className="items-center flex-1 flex flex-col justify-evenly mx-2">
         <View>
-          <Text className="text-white text-[24px] text-center mt-5 font-bold">Secure Payments</Text>
+          <Text className="text-white text-[24px] text-center  font-bold">Secure Payments</Text>
           <Text className="text-white mt-4 text-center text-[18px]">Make payments with confidence. Your funds are safely held in escrow until you receive your goods or services in satisfactory condition.</Text>
         </View>
         <Image source={Goals} />

@@ -6,9 +6,9 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 export default function OnboardingScreen4({navigation}) {
   return (
     <SafeAreaView className="flex-1 bg-[#4141FF]">
-      <View className="mt-6 items-center flex-1 flex flex-col justify-evenly">
+      <View className=" items-center flex-1 flex flex-col justify-evenly">
         <View>
-          <Text className="text-white text-[24px] text-center mt-5 font-bold">Easy Dispute Resolution</Text>
+          <Text className="text-white text-[24px] text-center font-bold">Easy Dispute Resolution</Text>
           <Text className="text-white mt-4 text-center text-[18px]">Encounter an issue? Our dedicated support team is here to mediate and resolve disputes quickly and fairly</Text>
         </View>
         <Image source={Dispute} />

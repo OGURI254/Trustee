@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, SafeAreaView, Image } from 'react-native'
+import { View, Text,StatusBar, TouchableOpacity, SafeAreaView, Image } from 'react-native'
 import React from 'react'
 import Handshake from '../../assets/Handshake.png'
 import AntDesign from '@expo/vector-icons/AntDesign';
@@ -6,9 +6,10 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 export default function OnboardingScreen1({ navigation }) {
   return (
     <SafeAreaView className="flex-1 bg-[#4141FF]">
-      <View className="mt-6 items-center flex-1 flex flex-col justify-evenly">
+      <StatusBar barStyle="light-content" backgroundColor="#2121FC" />
+      <View className="items-center flex-1 flex flex-col justify-evenly">
         <View>
-          <Text className="text-white text-[24px] text-center mt-5 font-bold">Welcome to Trustee</Text>
+          <Text className="text-white text-[24px] text-center font-bold">Welcome to Trustee</Text>
           <Text className="text-white mt-4 text-center text-[18px]">Your trusted escrow service for secure transactions. Ensure peace of mind with every deal you make</Text>
         </View>
         <Image source={Handshake} />
