@@ -4,10 +4,14 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import Entypo from '@expo/vector-icons/Entypo';
 import AntDesign from '@expo/vector-icons/AntDesign';
+import { CheckBox } from 'react-native-elements';
+
 
 
 export default function Login({ navigation }) {
     const [secureTextEntry, setSecureTextEntry] = useState(true);
+    const [isChecked, setIsChecked] = useState(false);
+
     const toggleSecureEntry = () => {
         setSecureTextEntry(!secureTextEntry);
     };
@@ -26,8 +30,14 @@ export default function Login({ navigation }) {
                         </TouchableOpacity>
                     </View>
                     <View className="mt-3 flex-row justify-between">
-                        <View>
-                            <Text>Remember Me</Text>
+                        <View className="flex-row items-center">
+                        <CheckBox className="-ml-2" checked={isChecked} onPress={() => setIsChecked(!isChecked)} containerStyle={{
+                            backgroundColor: 'transparent',
+                            borderWidth: 0,
+                            padding: 0,
+                            marginLeft: 0
+                        }} />
+                            <Text className="-ml-2">Remember Me</Text>
                         </View>
                         <TouchableOpacity><Text className="text-red-400" onPress={() => navigation.navigate('EnterEmail')}>Forget Password</Text></TouchableOpacity>
                     </View>
