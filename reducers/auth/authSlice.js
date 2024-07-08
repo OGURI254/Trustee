@@ -74,6 +74,49 @@ export const logout = createAsyncThunk('auth/logout', async () => {
   await authService.logout();
 });
 
+// Request password reset
+export const requestPasswordReset = createAsyncThunk(
+  'auth/requestPasswordReset',
+  async (email, thunkAPI) => {
+    try {
+      return await authService.requestPasswordReset(email);
+    } catch (error) {
+      const message = (error.response && error.response.data && error.response.data.message) ||
+        error.message || error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// Verify OTP
+export const verifyOTP = createAsyncThunk(
+  'auth/verifyOTP',
+  async (otp, thunkAPI) => {
+    try {
+      return await authService.verifyOTP(otp);
+    } catch (error) {
+      const message = (error.response && error.response.data && error.response.data.message) ||
+        error.message || error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// Reset password
+export const resetPassword = createAsyncThunk(
+  'auth/resetPassword',
+  async ({ newPassword, confirmPassword }, thunkAPI) => {
+    try {
+      return await authService.resetPassword(newPassword, confirmPassword);
+    } catch (error) {
+      const message = (error.response && error.response.data && error.response.data.message) ||
+        error.message || error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -131,9 +174,49 @@ export const authSlice = createSlice({
       })
       .addCase(logout.fulfilled, (state) => {
         state.user = null;
+      })
+      .addCase(requestPasswordReset.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(requestPasswordReset.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.message = action.payload.message;
+      })
+      .addCase(requestPasswordReset.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(verifyOTP.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(verifyOTP.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.message = action.payload.message;
+      })
+      .addCase(verifyOTP.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(resetPassword.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(resetPassword.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.message = action.payload.message;
+      })
+      .addCase(resetPassword.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
       });
   },
 });
+
 
 export const { reset } = authSlice.actions;
 export default authSlice.reducer;

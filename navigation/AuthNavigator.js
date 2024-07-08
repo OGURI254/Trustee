@@ -7,6 +7,7 @@ import EnterEmail from '../Screens/Auth/ResetPassword/EnterEmail';
 import EnterOTP from '../Screens/Auth/ResetPassword/EnterOTP';
 import CreateNewPassword from '../Screens/Auth/ResetPassword/CreateNewPassword';
 import PasswordChanged from '../Screens/Auth/ResetPassword/PasswordChanged';
+import SignUpNavigatorScreens from './SignUpNavigatorScreens';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,7 @@ export default function AuthNavigator() {
       <Stack.Screen name="EnterOtp" component={EnterOTP} options={{ headerShown: false }} />
       <Stack.Screen name="CreateNewPassword" component={CreateNewPassword} options={{ headerShown: false }} />
       <Stack.Screen name="PasswordChanged" component={PasswordChanged} options={{ headerShown: false }} />
+      <Stack.Screen name="SignUpScreens" component={SignUpNavigatorScreens} options={{ headerShown: false }} />
     </Stack.Navigator>
   )
 }

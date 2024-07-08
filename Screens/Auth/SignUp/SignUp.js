@@ -40,7 +40,7 @@ export default function SignUp({ navigation }) {
 
         if (isSuccess || user) {
             alert('Successfully registered')
-            navigation.navigate('Login');
+            navigation.navigate('SignUpScreens');
             dispatch(reset());
         }
     }, [user, isError, isSuccess, message, navigation, dispatch]);
@@ -57,7 +57,6 @@ export default function SignUp({ navigation }) {
                         dispatch(register(values));
                     }}
                 >
-
                     {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
 
                         <View className="mt-7">

@@ -31,7 +31,7 @@ export default function Login({ navigation }) {
     }
 
     if (isSuccess || user) {
-      alert('Login success')
+      // alert('Login success')
       navigation.navigate('Main', { screen: 'Home' });
       dispatch(reset());
       // Clear form fields after successful login

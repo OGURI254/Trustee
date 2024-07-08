@@ -1,10 +1,10 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-export default function YearOfBirth() {
+export default function ContactAndFAQScreen() {
   return (
     <View>
-      <Text>YearOfBirth</Text>
+      <Text>ContactAndFAQScreen</Text>
     </View>
   )
 }

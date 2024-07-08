@@ -5,7 +5,7 @@ export default function EnterOTP({navigation}) {
   return (
     <SafeAreaView className="flex-1">
       <View className="mx-2 mt-4">
-        <Text className="font-bold text-[24px]">OTP Verification</Text>
+        <Text className="font-bold text-[24px] mt-5">OTP Verification</Text>
         <Text>Enter the verification code we just sent to your email address</Text>
         <View className="flex-row gap-3 mt-4 items-center justify-center">
           <TextInput className="border text-center font-bold text-[20px] w-12 h-12 p-1 rounded border-gray-200" />
