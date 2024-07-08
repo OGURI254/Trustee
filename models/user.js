@@ -5,7 +5,9 @@ const userSchema = mongoose.Schema({
     email: {type: String, required: true},
     password: {type: String, required: true},
     phoneNumber: {type: String, required: true},
-    id: {type: String}
+    id: {type: String},
+    resetOTP: {type: String},
+    otpExpires: {type: Date}
 })
 
 export default mongoose.model('User', userSchema)
