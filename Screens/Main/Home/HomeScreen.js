@@ -66,7 +66,7 @@ export default function HomeScreen({navigation}) {
           </TouchableOpacity>
         </View>
         <View className="mt-4 flex-row items-center justify-between">
-          <TouchableOpacity className="bg-[#e7d9f3] flex-row justify-center items-center border-[0.8px] border-[#C8A0E8]  rounded w-[48%] h-[140px]">
+          <TouchableOpacity className="bg-[#e7d9f3] flex-row justify-center items-center border-[0.8px] border-[#C8A0E8]  rounded w-[48%] h-[140px]" onPress={() => navigation.navigate('TransactionNav')}>
             <Image source={Money} />
             <Text className="ml-2">Transactions</Text>
           </TouchableOpacity>
@@ -77,11 +77,17 @@ export default function HomeScreen({navigation}) {
             </View>
           </TouchableOpacity>
         </View>
-        <View className="mt-4">
-        <TouchableOpacity className="bg-[#f1e3d8] p-3 border-[#FF9A6C] border-[0.8px] rounded w-[48%] h-[140px] flex-row justify-center items-center">
+        <View className="mt-4 flex-row items-center justify-between">
+        <TouchableOpacity className="bg-[#f1e3d8] p-3 border-[#FF9A6C] border-[0.8px] rounded w-[48%] h-[140px] flex-row justify-center items-center" onPress={() => navigation.navigate('WalletScreen')}>
             <Image source={Mpesa}/>
             <View className="flex-1">
               <Text className="flex-wrap text-center text-[18px]">My wallet</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity className="bg-[#f1e3d8] p-3 border-[#FF9A6C] border-[0.8px] rounded w-[48%] h-[140px] flex-row justify-center items-center">
+            <Ionicons  name="chatbubbles-outline" size={40} color="black" />
+            <View className="flex-1">
+              <Text className="flex-wrap text-center text-[18px]">All Products</Text>
             </View>
           </TouchableOpacity>
         </View>

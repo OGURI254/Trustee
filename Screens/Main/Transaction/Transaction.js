@@ -1,20 +1,33 @@
-import { View, Text, SafeAreaView,TouchableOpacity } from 'react-native'
+import { View, Text, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { Ionicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 
-export default function Transaction({navigation}) {
+export default function Transaction({ navigation }) {
   return (
     <SafeAreaView className="flex-1">
-      <View className="h-full mt-14 w-[60%] rounded-tr-3xl bg-black p-2">
-        <Text className="text-white mt-2 font-bold text-[17px]">Transactions</Text>
-        <View className="mt-3">
-          <TouchableOpacity className="flex-row items-center mt-5" onPress={() => navigation.navigate('PendingPayments')}><MaterialIcons name="pending-actions" size={20} color="white" /><Text className="text-white ml-2">Pending payments</Text></TouchableOpacity>
-          <TouchableOpacity className="flex-row items-center mt-5" onPress={() => navigation.navigate('PendingRequests')}><Ionicons name="notifications" size={20} color="white" /><Text className="text-white ml-2">Pending Requests</Text></TouchableOpacity>
-          <TouchableOpacity className="flex-row items-center mt-5" onPress={() => navigation.navigate('PendingHistory')}><AntDesign name="clockcircleo" size={20} color="white" /><Text className="text-white ml-2">Pending history</Text></TouchableOpacity>
+      <ScrollView>
+        <TouchableOpacity className="bg-[#2D4CED] rounded mt-10 mx-auto w-[200px] items-center justify-center h-[70px]" onPress={() => navigation.navigate('TransactionScreen')}>
+          <Text className="text-white font-bold text-[20px]">Transactions</Text>
+        </TouchableOpacity>
+        <View>
+          <View className="h-[4px] bg-gray-300 mt-5"></View>
+          <View className="flex-row justify-between px-2 mt-3">
+            <View className="items-center">
+              <Text className="font-bold text-[18px]">[Payment Code]</Text>
+              <Text className="text-[18px]">[Amount]</Text>
+            </View>
+            <View className="items-center">
+              <Text className="font-bold text-[18px]">[Item Ticket]</Text>
+              <Text className="text-[18px]">[Time]</Text>
+            </View>
+          </View>
+          <TouchableOpacity className="mt-4 mx-auto "><Text className="text-[18px]">View Details</Text></TouchableOpacity>
+          <View className="h-[4px] bg-gray-300 mt-5"></View>
         </View>
-      </View>
+      </ScrollView>
+
     </SafeAreaView>
   )
 }

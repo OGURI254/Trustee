@@ -6,7 +6,7 @@ export default function PendingPaymentsScreen({ navigation }) {
   return (
     <SafeAreaView className="p-2">
       <ScrollView>
-        <TouchableOpacity onPress={() => navigation.navigate('TransactionsHome')} className="mt-2">
+        <TouchableOpacity onPress={() => navigation.navigate('TransactionScreen')} className="mt-2">
           <AntDesign name="arrowleft" size={24} color="black" />
         </TouchableOpacity>
         <Text className="text-[17px] text-center">Pending Payments</Text>

@@ -8,7 +8,7 @@ export default function PendingHistory({navigation}) {
     <SafeAreaView className="p-2">
       <ScrollView>
         <View className="flex-row justify-between items-center mt-2">
-        <TouchableOpacity onPress={() => navigation.navigate('TransactionsHome')} >
+        <TouchableOpacity onPress={() => navigation.navigate('TransactionScreen')} >
           <AntDesign name="arrowleft" size={24} color="black" />
         </TouchableOpacity>
         <TouchableOpacity>

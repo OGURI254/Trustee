@@ -3,6 +3,8 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../Screens/Main/Home/HomeScreen';
 import TrackProduct from '../Screens/Main/Home/ProductTracking/TrackProduct';
+import MyWalletNaviagtor from './MyWalletNaviagtor';
+import TransactionNavigator from './TransactionNavigator';
 
 const Stack = createStackNavigator();
 
@@ -11,6 +13,8 @@ export default function HomeNavigator() {
     <Stack.Navigator>
         <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
         <Stack.Screen name="TrackProduct" component={TrackProduct} options={{ headerShown: false }} />
+        <Stack.Screen name="TransactionNav" component={TransactionNavigator} options={{ headerShown: false }} />
+        <Stack.Screen name="WalletScreen" component={MyWalletNaviagtor} options={{ headerShown: false }} />
     </Stack.Navigator>
   )
 }
