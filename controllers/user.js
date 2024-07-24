@@ -1,6 +1,10 @@
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import nodemailer from 'nodemailer';
+import multer from 'multer';
+import path from 'path';
+import fs from 'fs';
+import { v4 as uuidv4 } from 'uuid';
 
 import User from '../models/user.js'
 
@@ -163,3 +167,116 @@ export const resetPassword = async (req, res) => {
     }
 };
 
+
+// Configure multer for file uploads
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads/'); // Set the destination folder
+    },
+    filename: (req, file, cb) => {
+        cb(null, uuidv4() + path.extname(file.originalname)); // Unique filename
+    }
+});
+
+const upload = multer({ storage });
+
+export const acceptTerms = async (req, res) => {
+    const { email, termsAccepted } = req.body;
+
+    try {
+        const user = await User.findOne({ email });
+        if (!user) return res.status(404).json({ message: "User doesn't exist." });
+
+        user.termsAccepted = termsAccepted;
+        await user.save();
+
+        res.status(200).json({ message: 'Terms acceptance updated.' });
+    } catch (error) {
+        res.status(500).json({ message: 'Something went wrong' });
+    }
+};
+
+export const setDate = async (req, res) => {
+    const { email, dateOfBirth } = req.body;
+
+    try {
+        const user = await User.findOne({ email });
+        if (!user) return res.status(404).json({ message: "User doesn't exist." });
+
+        user.dateOfBirth = dateOfBirth;
+        await user.save();
+
+        res.status(200).json({ message: 'Date of birth updated.' });
+    } catch (error) {
+        res.status(500).json({ message: 'Something went wrong' });
+    }
+};
+
+export const uploadIdImages = async (req, res) => {
+    const { email } = req.body;
+    const frontIdImage = req.file('frontIdImage').path;
+    const backIdImage = req.file('backIdImage').path;
+
+    try {
+        const user = await User.findOne({ email });
+        if (!user) return res.status(404).json({ message: "User doesn't exist." });
+
+        user.frontIdImage = frontIdImage;
+        user.backIdImage = backIdImage;
+        await user.save();
+
+        res.status(200).json({ message: 'ID images uploaded.' });
+    } catch (error) {
+        res.status(500).json({ message: 'Something went wrong' });
+    }
+};
+
+export const selectPlans = async (req, res) => {
+    const { email, selectedPlans } = req.body;
+
+    try {
+        const user = await User.findOne({ email });
+        if (!user) return res.status(404).json({ message: "User doesn't exist." });
+
+        user.selectedPlans = selectedPlans;
+        await user.save();
+
+        res.status(200).json({ message: 'Plans updated.' });
+    } catch (error) {
+        res.status(500).json({ message: 'Something went wrong' });
+    }
+};
+
+export const setBusinessDetails = async (req, res) => {
+    const { email, businessName, businessInfoNumber, contactInformation, businessDescription } = req.body;
+
+    try {
+        const user = await User.findOne({ email });
+        if (!user) return res.status(404).json({ message: "User doesn't exist." });
+
+        user.businessName = businessName;
+        user.businessInfoNumber = businessInfoNumber;
+        user.contactInformation = contactInformation;
+        user.businessDescription = businessDescription;
+        await user.save();
+
+        res.status(200).json({ message: 'Business details updated.' });
+    } catch (error) {
+        res.status(500).json({ message: 'Something went wrong' });
+    }
+};
+
+export const finalizeSignup = async (req, res) => {
+    const { email } = req.body;
+
+    try {
+        const user = await User.findOne({ email });
+        if (!user) return res.status(404).json({ message: "User doesn't exist." });
+
+        // Logic to finalize signup, e.g., send confirmation email, update status, etc.
+        
+        res.status(200).json({ message: 'Signup finalized.' });
+    } catch (error) {
+        res.status(500).json({ message: 'Something went wrong' });
+    }
+};
