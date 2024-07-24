@@ -77,13 +77,56 @@ const resetPassword = async (newPassword, confirmPassword) => {
   return response.data;
 };
 
+// Accept terms
+const acceptTerms = async () => {
+  const user = JSON.parse(await AsyncStorage.getItem('user'));
+  if (!user || !user.result || !user.result.email) {
+    throw new Error("User doesn't exist");
+  }
+
+  const response = await axios.post(BASE_URI + 'acceptTerms', { 
+    email: user.result.email, 
+    termsAccepted: true 
+  }, {
+    headers: {
+      Authorization: `Bearer ${user.token}` // Include the token in the header
+    }
+  });
+  return response.data;
+};
+
+// Set Date of Birth
+const setDate = async (dateOfBirth) => {
+  const userStr = await AsyncStorage.getItem('user');
+  const user = JSON.parse(userStr);
+  
+  if (!user || !user.result || !user.result.email) {
+    throw new Error("User doesn't exist");
+  }
+
+  const response = await axios.post(BASE_URI + 'setDate', { 
+    email: user.result.email, 
+    dateOfBirth 
+  }, {
+    headers: {
+      Authorization: `Bearer ${user.token}` // Include the token in the header
+    }
+  });
+
+  return response.data;
+};
+
+
+
 const authService = {
   signup,
   logout,
   signin,
   requestPasswordReset,
   verifyOTP,
-  resetPassword
+  resetPassword,
+  acceptTerms,
+  setDate,
 }
 
 export default authService

@@ -116,6 +116,84 @@ export const resetPassword = createAsyncThunk(
   }
 );
 
+// Multi-step signup actions
+export const acceptTerms = createAsyncThunk(
+  'auth/acceptTerms',
+  async (_, thunkAPI) => {
+    try {
+      return await authService.acceptTerms();
+    } catch (error) {
+      const message = (error.response && error.response.data && error.response.data.message) ||
+        error.message || error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const setDate = createAsyncThunk(
+  'auth/setDate',
+  async (date, thunkAPI) => {
+    try {
+      return await authService.setDate(date);
+    } catch (error) {
+      const message = (error.response && error.response.data && error.response.data.message) ||
+        error.message || error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const uploadIdImages = createAsyncThunk(
+  'auth/uploadIdImages',
+  async ({ frontIdImage, backIdImage }, thunkAPI) => {
+    try {
+      return await authService.uploadIdImages(frontIdImage, backIdImage);
+    } catch (error) {
+      const message = (error.response && error.response.data && error.response.data.message) ||
+        error.message || error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const selectPlans = createAsyncThunk(
+  'auth/selectPlans',
+  async (plans, thunkAPI) => {
+    try {
+      return await authService.selectPlans(plans);
+    } catch (error) {
+      const message = (error.response && error.response.data && error.response.data.message) ||
+        error.message || error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const setBusinessDetails = createAsyncThunk(
+  'auth/setBusinessDetails',
+  async (businessDetails, thunkAPI) => {
+    try {
+      return await authService.setBusinessDetails(businessDetails);
+    } catch (error) {
+      const message = (error.response && error.response.data && error.response.data.message) ||
+        error.message || error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const finalizeSignup = createAsyncThunk(
+  'auth/finalizeSignup',
+  async (_, thunkAPI) => {
+    try {
+      return await authService.finalizeSignup();
+    } catch (error) {
+      const message = (error.response && error.response.data && error.response.data.message) ||
+        error.message || error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 export const authSlice = createSlice({
   name: 'auth',
@@ -213,10 +291,87 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
+      })
+      .addCase(acceptTerms.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(acceptTerms.fulfilled, (state) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.message = 'Terms accepted successfully';
+      })
+      .addCase(acceptTerms.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(setDate.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(setDate.fulfilled, (state) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.message = 'Date set successfully';
+      })
+      .addCase(setDate.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(uploadIdImages.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(uploadIdImages.fulfilled, (state) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.message = 'ID images uploaded successfully';
+      })
+      .addCase(uploadIdImages.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(selectPlans.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(selectPlans.fulfilled, (state) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.message = 'Plans selected successfully';
+      })
+      .addCase(selectPlans.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(setBusinessDetails.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(setBusinessDetails.fulfilled, (state) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.message = 'Business details set successfully';
+      })
+      .addCase(setBusinessDetails.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(finalizeSignup.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(finalizeSignup.fulfilled, (state) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.message = 'Signup finalized successfully';
+      })
+      .addCase(finalizeSignup.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
       });
   },
 });
-
 
 export const { reset } = authSlice.actions;
 export default authSlice.reducer;
