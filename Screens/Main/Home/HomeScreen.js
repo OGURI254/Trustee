@@ -84,7 +84,7 @@ export default function HomeScreen({navigation}) {
               <Text className="flex-wrap text-center text-[18px]">My wallet</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity className="bg-[#f1e3d8] p-3 border-[#FF9A6C] border-[0.8px] rounded w-[48%] h-[140px] flex-row justify-center items-center">
+          <TouchableOpacity className="bg-[#f1e3d8] p-3 border-[#FF9A6C] border-[0.8px] rounded w-[48%] h-[140px] flex-row justify-center items-center" onPress={() => navigation.navigate('Products')}>
             <Ionicons  name="chatbubbles-outline" size={40} color="black" />
             <View className="flex-1">
               <Text className="flex-wrap text-center text-[18px]">All Products</Text>
